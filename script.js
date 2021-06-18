@@ -1,30 +1,27 @@
-let randomWord = ["Rock", "Paper", "Scissors"];
-
-/*function random() {
-    randomWord[Math.floor(Math.random() * randomWord.length)];
-}
-random = random(randomWord);  */
-
-function randomInt(limit) {
-    return Math.floor(Math.random() * Math.floor(limit));
-}
-
 function computerPlay() {
-    let index = randomInt(randomWord.length);
-    return index;
-}
-console.log(computerPlay);
-
-/* let playerSelection = prompt("Enter your selection.");
-if (playerSelection === computerPlay(choices)) {
-    prompt("Congratulations! You won!")
-} else {
-    prompt("Dun dun dun. You lost. Try again.")
+let options = ["rock", "paper", "scissors"];
+let randomOption = Math.floor(Math.random()*options.length);
+let randomWord = options[randomOption];
+return randomWord;
 }
 
-let computerSelection;
+const computerSelection = computerPlay();
+let playerSelection = "scissors";
+let message;
 
-/*Output to console a random string: "Rock", "Paper" or
-"Scissors"
- It needs to randomize, not print out the same result
- over and over. */
+function singleRound() {
+    if (computerSelection === "rock" && playerSelection === "scissors") {
+        message = "You lose! Rock beats scissors!"
+    } else if (computerSelection === "scissors" && playerSelection === "paper") {
+        message = "You lose! Scissors beats paper!"
+    } else if (computerSelection === "paper" && playerSelection === "rock") {
+        message = "You lose! Paper beats rock!";
+    } else if (computerSelection === "scissors" && playerSelection === "rock") {
+        message = "You win! Rock beats scissors!";
+    } else if (computerSelection === "paper" && playerSelection === "scissors") {
+        message = "You win! Scissors beats paper!" 
+    } else if (computerSelection === "rock" && playerSelection === "paper") {
+        message = "You win! Paper beats rock!"
+    }
+    return message;
+}
